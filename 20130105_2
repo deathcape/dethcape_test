@@ -1,5 +1,5 @@
 import nltk
 import cPickle
 words = cPickle.load(open("myData.pickle"))
-freq_dest=nltk.FreqDist(words)
+freq_dist=nltk.FreqDist(words)
 freq_dist.key()[:50]
