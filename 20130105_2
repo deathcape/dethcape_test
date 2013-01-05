@@ -23,4 +23,10 @@ al_tweets = [ tweet
     for tweet in page["result"]
 
 def get_rt_sources(tweet):
-  rt_patterns = re.compile(r"(RT|via)((
+  rt_patterns = re.compile(r"(RT|via)((?:\b\w*@\w+)+)", re.IGNORECASE)
+  return [source.strip()
+    for tuple in rt_paterns.findall(tweet)
+      for source in tuple
+        if source not in ("RT", "via")]
+
+for tweet
