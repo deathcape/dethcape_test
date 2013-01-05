@@ -18,15 +18,30 @@ for t in example_tweets:
 import networkx as nx
 import re
 g = nx.DiGraph()
-al_tweets = [ tweet
+all_tweets = [ tweet
   for page in search_results
-    for tweet in page["result"]
+    for tweet in page["results"]]
 
 def get_rt_sources(tweet):
-  rt_patterns = re.compile(r"(RT|via)((?:\b\w*@\w+)+)", re.IGNORECASE)
+  rt_patterns = re.compile(r"(RT|via)((?:\b\W*@\w+)+)", re.IGNORECASE)
   return [source.strip()
-    for tuple in rt_paterns.findall(tweet)
+    for tuple in rt_patterns.findall(tweet)
       for source in tuple
         if source not in ("RT", "via")]
 
-for tweet
+for tweet in all_tweets:
+  rt_sources = get_rt_sources(tweet["text"])
+  if not rt_sources: continue
+  for rt_source in rt_sources:
+    g.add_edge(rt_source, tweet["from_user"], {"tweet_id" : tweet["id"]})
+
+
+g.number_of_nodes()
+
+g.number_of_edges()
+
+g.edges(data=True)[0]
+
+len(nx.connected_components(g.to_undirected()))
+
+sorted(nx.degree(g).values())
