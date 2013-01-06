@@ -1,6 +1,6 @@
 import nltk
 import cPickle
-#words = cPickle.load(open("myData.pickle"))
+words = cPickle.load(open("myData.pickle"))
 freq_dist = nltk.FreqDist(words)
 freq_dist.keys()[:50]
 
@@ -10,7 +10,7 @@ freq_dist.keys()[:50]
 import re
 rt_patterns = re.compile(r"(RT|via)((?:\b\W*@\w+)+)", re.IGNORECASE)        
 example_tweets=["RT @SocialWebMining Justin Bieber is on SNL 2nite. w00t?!?",
-... "Justin Bieber is on SNL 2nite. w00t?!? (via @SocialWebMining)"]
+"Justin Bieber is on SNL 2nite. w00t?!? (via @SocialWebMining)"]
 for t in example_tweets:
   rt_patterns.findall(t)
 
