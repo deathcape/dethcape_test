@@ -17,7 +17,8 @@ tweets = [r['text']
   for result in search_results 
 		for r in result['results']]
 
-import tweets
+import json
+print tweets
 
 
 #tweetの語彙的多様性
