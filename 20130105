@@ -29,3 +29,8 @@ for t in tweets:
 
 1.0*len(set(words))/len(words) #語彙的多様性
 #1.0をかけると丸め誤差が回避できるらしい・・・
+
+f = open("myData.pickle", "wb")
+import cPickle
+cPickle.dump(words, f)
+f.close()
