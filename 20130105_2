@@ -57,6 +57,6 @@ try:
 except ImportError, e:
  dot = ['"%s" -> "%s" [tweet_id=%s]' % (n1, n2, g[n1][n2]['tweet_id'])
  for n1, n2 in g.edges()]
- f = open(OUT, 'w')
- f.write('strict digraph {\n%s\n}' % (';\n'.join(dot),))
- f.close()
+f = open(OUT, 'w')
+f.write('strict digraph {\n%s\n}' % (';\n'.join(dot),))
+f.close()
