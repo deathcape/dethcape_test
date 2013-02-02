@@ -50,6 +50,7 @@ sorted(nx.degree(g).values())
 
 import networkx as nx
 import re
+import codecs
 
 OUT = "snl_search_results.dot"
 try:
@@ -57,6 +58,6 @@ try:
 except ImportError, e:
  dot = ['"%s" -> "%s" [tweet_id=%s]' % (n1, n2, g[n1][n2]['tweet_id'])
  for n1, n2 in g.edges()]
-f = open(OUT, 'w')
+f = codecs.open(OUT, 'w','utf-8')
 f.write('strict digraph {\n%s\n}' % (';\n'.join(dot),))
 f.close()
